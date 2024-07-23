@@ -4,28 +4,17 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { motion } from "framer-motion";
 import { Dog, Heart, PlayCircle, Shield } from "lucide-react";
 
 const DogLandingPage = () => {
   const [selectedTab, setSelectedTab] = useState("loyalty");
 
-  const fadeIn = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-  };
-
   return (
     <div className="container mx-auto px-4 py-8 bg-gradient-to-b from-blue-50 to-white min-h-screen">
-      <motion.header 
-        className="text-center mb-12"
-        initial="hidden"
-        animate="visible"
-        variants={fadeIn}
-      >
+      <header className="text-center mb-12 animate-in fade-in slide-in-from-bottom duration-1000">
         <h1 className="text-5xl font-bold text-blue-600 mb-4">Welcome to Paw-some Dogs</h1>
         <p className="text-xl text-gray-600">Discover the joy and companionship of man's best friend</p>
-      </motion.header>
+      </header>
 
       <Tabs defaultValue="loyalty" className="mb-12">
         <TabsList className="grid w-full grid-cols-3">
@@ -33,7 +22,7 @@ const DogLandingPage = () => {
           <TabsTrigger value="playful" onClick={() => setSelectedTab("playful")}>Playful Friends</TabsTrigger>
           <TabsTrigger value="support" onClick={() => setSelectedTab("support")}>Emotional Support</TabsTrigger>
         </TabsList>
-        <TabsContent value="loyalty">
+        <TabsContent value="loyalty" className="animate-in fade-in-50 duration-300">
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center"><Heart className="mr-2 text-red-500" /> Loyal Companions</CardTitle>
@@ -44,7 +33,7 @@ const DogLandingPage = () => {
             </CardContent>
           </Card>
         </TabsContent>
-        <TabsContent value="playful">
+        <TabsContent value="playful" className="animate-in fade-in-50 duration-300">
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center"><PlayCircle className="mr-2 text-green-500" /> Playful Friends</CardTitle>
@@ -55,7 +44,7 @@ const DogLandingPage = () => {
             </CardContent>
           </Card>
         </TabsContent>
-        <TabsContent value="support">
+        <TabsContent value="support" className="animate-in fade-in-50 duration-300">
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center"><Shield className="mr-2 text-blue-500" /> Emotional Support</CardTitle>
@@ -68,12 +57,7 @@ const DogLandingPage = () => {
         </TabsContent>
       </Tabs>
 
-      <motion.section 
-        className="text-center mb-12"
-        initial="hidden"
-        animate="visible"
-        variants={fadeIn}
-      >
+      <section className="text-center mb-12 animate-in fade-in slide-in-from-bottom duration-1000 delay-300">
         <h2 className="text-3xl font-semibold text-blue-600 mb-4">Why Choose a Dog?</h2>
         <div className="flex flex-wrap justify-center gap-4">
           <Badge variant="secondary" className="text-lg py-2 px-4">Unconditional love</Badge>
@@ -82,21 +66,16 @@ const DogLandingPage = () => {
           <Badge variant="secondary" className="text-lg py-2 px-4">Teach responsibility</Badge>
           <Badge variant="secondary" className="text-lg py-2 px-4">Home security</Badge>
         </div>
-      </motion.section>
+      </section>
 
       <Separator className="my-8" />
 
-      <motion.section 
-        className="text-center"
-        initial="hidden"
-        animate="visible"
-        variants={fadeIn}
-      >
+      <section className="text-center animate-in fade-in slide-in-from-bottom duration-1000 delay-500">
         <h2 className="text-3xl font-semibold text-blue-600 mb-4">Ready to Meet Your New Best Friend?</h2>
         <Button className="bg-blue-600 text-white hover:bg-blue-700 text-lg py-6 px-8">
           <Dog className="mr-2" /> Find a Dog Near You
         </Button>
-      </motion.section>
+      </section>
     </div>
   );
 };
